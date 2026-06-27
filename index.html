@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>توب 10</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-p1A9B6...etc..." crossorigin="anonymous"
+            referpolicy="no-referrer">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="next-ques close">
+            <div class="bg"></div>
+            <button>السؤال التالي</button>
+        </div>
+        <div class="players-data">
+            <input type="text" name="player-one-name-input"
+                id="player-one-name-input" placeholder="أدخل اسم اللاعب الأول">
+            <input type="text" name="player-two-name-input"
+                id="player-two-name-input" placeholder="أدخل اسم اللاعب الثاني">
+            <input type="number" name="points-limit" id="points-limit"
+                placeholder="ادخل حد النقاط لتحديد الفوز">
+            <!-- <div class="points-limit-alert">
+                <p>اختر رقم من 55 إلى 550</p>
+            </div> -->
+            <button class="unclick">استمرار</button>
+        </div>
+        <div class="select-category">
+            <div class="categories">
+
+            </div>
+            <button class="unclick">إبدأ اللعب</button>
+        </div>
+        <aside class="answers"></aside>
+        <div class="main-content">
+            <header>
+                <img src="logo2.png" alt class="logo">
+                <h1>top 10 game</h1>
+                <img src="logo2.png" alt class="logo">
+            </header>
+            <main>
+                <div class="question">
+                    <h1>أكثر اللاعبين تسجيلا للأهداف في كأس العالم</h1>
+                </div>
+                <div class="score">
+                    <div class="player-one">
+                        <h1 class="player-name"></h1>
+                        <p>5</p>
+                    </div>
+                    <div class="player-two">
+                        <h1 class="player-name"></h1>
+                        <p>2</p>
+                    </div>
+                </div>
+                <div class="btn-div">
+                    <button>تخطٍّ إلى السؤال التالي</button>
+                </div>
+            </main>
+            <footer>
+                <h1>استمتعوا &hearts; - <a
+                        href="https://elshazly161107.github.io/Elshazly-Protofolio/">Abdullah
+                        Elshazly</a></h1>
+            </footer>
+        </div>
+        <div class="win-page close">
+            <p>ألف مبروووووك !!!</p>
+            <div class="winner">
+                <h1 class="winner-name">سالم</h1>
+                <h2 class="winner-score">33</h2>
+            </div>
+            <div class="loser">
+                <h1 class="loser-name">محمد</h1>
+                <h2 class="loser-score">666</h2>
+            </div>
+            <button id="reset" onclick="location.reload()">أعد اللعب</button>
+        </div>
+        <script
+            src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    </body>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</html>

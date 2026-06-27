@@ -1,0 +1,757 @@
+:root {
+    /* Background Colors */
+    --bg-main: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-hover: #475569;
+
+    /* Primary & Accent Colors */
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --danger: #dc2626;
+    --warning: #f59e0b;
+    --link-color: #38bdf8;
+
+    /* Text Colors */
+    --text-light: white;
+
+    /* Borders & Shadows */
+    --border-light: rgba(255, 255, 255, 0.1);
+    --shadow-light: rgba(0, 0, 0, 0.25);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+
+    /* Scrollbar Colors */
+    --scrollbar-thumb: #64748b;
+    --scrollbar-thumb-hover: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cairo", Tahoma, sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background: var(--bg-main);
+    color: var(--text-light);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+/* Sidebar */
+
+.answers {
+    width: 400px;
+    flex-shrink: 0;
+    background: var(--bg-secondary);
+    padding: 20px;
+    overflow-y: auto;
+    border-left: 2px solid var(--border-light);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    height: 100vh;
+}
+
+.answers .answer {
+    background: var(--bg-tertiary);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: .3s;
+}
+
+.answer.unclick {
+    opacity: .5;
+    filter: grayscale(.75);
+    pointer-events: none;
+    user-select: none;
+}
+
+.answers .answer:hover {
+    background: var(--bg-hover);
+}
+
+.answers .answer p {
+    width: 40px;
+    height: 40px;
+    background: var(--warning);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.answers .answer h1 {
+    font-size: 18px;
+    flex-grow: 1;
+}
+
+.answers .answer button {
+    border: none;
+    height: 48px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.answers .answer button:hover {
+    opacity: .85;
+}
+
+.add-to-player-one {
+    background: var(--primary);
+    color: var(--text-light);
+}
+
+.add-to-player-two {
+    background: var(--danger);
+    color: var(--text-light);
+}
+
+/* Main Content */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+
+header {
+    height: 90px;
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+header h1 {
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+/* Main */
+
+main {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 40px;
+    padding: 40px;
+}
+
+/* Question */
+
+.question {
+    width: min(900px, 100%);
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+
+    padding: 25px 40px;
+    border-radius: 20px;
+    text-align: center;
+
+    box-shadow: 0 15px 30px var(--shadow-light);
+}
+
+.question h1 {
+    font-size: 2rem;
+}
+
+/* Score */
+
+.score {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.player-one,
+.player-two {
+    width: 280px;
+
+    background: var(--bg-secondary);
+    border-radius: 25px;
+
+    padding: 25px;
+    text-align: center;
+
+    box-shadow: 0 10px 25px var(--shadow-dark);
+    transition: .3s;
+}
+
+.player-one:hover,
+.player-two:hover {
+    transform: translateY(-5px);
+}
+
+.player-one {
+    border-top: 6px solid var(--primary);
+}
+
+.player-two {
+    border-top: 6px solid var(--danger);
+}
+
+.player-name {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.player-one p,
+.player-two p {
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--warning);
+    line-height: 1;
+}
+
+/* Footer */
+
+footer {
+    height: 70px;
+    background: var(--bg-secondary);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-top: 2px solid var(--border-light);
+}
+
+footer h1 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+footer a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Scrollbar */
+
+.answers::-webkit-scrollbar {
+    width: 10px;
+}
+
+.answers::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+.answers::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 999px;
+}
+
+.answers::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    .answers {
+        width: 100%;
+        height: 45vh;
+
+        border-left: none;
+        border-bottom: 2px solid var(--border-light);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    main {
+        padding: 20px;
+    }
+
+    .question {
+        padding: 20px;
+    }
+
+    .question h1 {
+        font-size: 1.5rem;
+    }
+
+    .score {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .player-one,
+    .player-two {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+/* players data page */
+
+.players-data {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: var(--bg-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    overflow: hidden;
+    transition: .5s;
+    z-index: 10;
+}
+
+.players-data.close {
+    height: 0;
+}
+
+/* تنسيق الحقول */
+.players-data input {
+    width: calc(100% - 80px);
+    height: 56px;
+    background: var(--bg-tertiary);
+    border: 2px solid transparent;
+    border-radius: 14px;
+    padding: 0 20px;
+    color: var(--text-light);
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.players-data input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* تأثيرات التركيز (Focus) - أزرق للأول وأحمر للثاني */
+#player-one-name-input:focus {
+    border-color: var(--primary);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.25);
+}
+
+#player-two-name-input:focus {
+    border-color: var(--danger);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.25);
+}
+
+#points-limit:focus {
+    border-color: var(--warning);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+}
+
+/* زر الاستمرار */
+.players-data button {
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--text-light);
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    padding: 10px 20px;
+}
+
+/* حالة الزر لما يكون غير قابل للضغط */
+.players-data button.unclick {
+    filter: grayscale(0.75);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.players-data button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.45);
+}
+
+.players-data button.unclick:hover {
+    transform: translateY(0);
+    opacity: 1;
+    box-shadow: none;
+}
+
+.players-data button:active {
+    transform: translateY(1px);
+}
+
+/* select category */
+
+/* الحاوية الرئيسية لاختيار الأقسام */
+.select-category {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: var(--bg-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    overflow: hidden;
+    transition: .5s;
+    z-index: 9;
+}
+
+.select-category.close {
+    height: 0;
+}
+
+.categories {
+    width: calc(100% - 80px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.category input[type="checkbox"] {
+    display: none;
+}
+
+/* تحويل الليبل (Label) إلى زر فخم */
+.category label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background: var(--bg-tertiary);
+    color: var(--text-light);
+    border: 2px solid var(--border-light);
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    user-select: none;
+    /* عشان النص ما يتحدد لما تضغط عليه مرتين */
+}
+
+/* تأثير مرور الماوس (Hover) */
+.category label:hover {
+    background: var(--bg-hover);
+    border-color: var(--primary);
+}
+
+/* التأثير لما اللاعب يختار القسم (Checked) */
+.category input[type="checkbox"]:checked+label {
+    background: var(--primary);
+    border-color: var(--primary-dark);
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+    transform: scale(1.05);
+    /* يكبر شوي عشان يبين إنه تم اختياره */
+}
+
+/* زر إبدأ اللعب (خليته بلون برتقالي عشان يكون مميز وملفت) */
+.select-category button {
+    height: 60px;
+    background: linear-gradient(135deg, var(--warning), #d97706);
+    color: var(--text-light);
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+    padding: 10px 20px;
+}
+
+.select-category button:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+    box-shadow: 0 15px 30px rgba(245, 158, 11, 0.5);
+}
+
+.select-category button.unclick {
+    filter: grayscale(0.75);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.select-category button.unclick:hover {
+    transform: translateY(0);
+    opacity: 1;
+    box-shadow: none;
+}
+
+.select-category button:active {
+    transform: translateY(1px);
+}
+
+/* next ques */
+
+.next-ques {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.next-ques.close {
+    width: 0;
+}
+
+.next-ques .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: var(--bg-main);
+    z-index: -1;
+    padding: 20px;
+}
+
+.next-ques button {
+    height: 60px;
+    background: linear-gradient(135deg, var(--warning), #d97706);
+    color: var(--text-light);
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+    padding: 10px 20px;
+}
+
+.next-ques button:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+    box-shadow: 0 15px 30px rgba(245, 158, 11, 0.5);
+}
+
+/* win page */
+
+/* الحاوية الرئيسية لشاشة الفوز */
+.win-page {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: var(--bg-secondary);
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    overflow: hidden;
+    border: 1px solid var(--primary-dark);
+    /* عشان تتوسط الشاشة لو كانت داخل main */
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    scale: 1;
+    transition: 0.3s;
+}
+
+.win-page.close {
+    scale: 0;
+}
+
+/* حركة دخول خفيفة للشاشة */
+@keyframes popIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* نص التهنئة (ألف مبروك) */
+.win-page>p {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--warning);
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+    margin-bottom: 10px;
+}
+
+/* بطاقة الفائز (فخمة وبارزة) */
+.winner {
+    width: calc(100% - 60px);
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px var(--shadow-light);
+    border: 2px solid var(--warning);
+    /* إطار ذهبي/برتقالي */
+    /* تكبير بسيط لإبراز الفائز */
+}
+
+.winner-name {
+    font-size: 2.2rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.winner-score {
+    font-size: 6rem;
+    font-weight: bold;
+    color: var(--warning);
+    line-height: 1;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* بطاقة الخاسر (أصغر وأهدأ) */
+.loser {
+    width: calc(100% - 120px);
+    background: var(--bg-tertiary);
+    padding: 15px 30px;
+    border-radius: 15px;
+    border: 2px solid var(--border-light);
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.loser-name {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    /* لون باهت قليلاً */
+}
+
+.loser-score {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--danger);
+    /* النتيجة باللون الأحمر */
+    line-height: 1;
+}
+
+/* زر إعادة اللعب */
+.win-page #reset {
+    height: 60px;
+    background: linear-gradient(135deg, var(--warning), #d97706);
+    color: var(--text-light);
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+    margin-top: 10px;
+    width: fit-content;
+    padding: 10px 20px;
+}
+
+.win-page #reset:hover {
+    transform: translateY(-3px);
+    opacity: 0.95;
+    box-shadow: 0 15px 30px rgba(245, 158, 11, 0.5);
+}
+
+.win-page #reset:active {
+    transform: translateY(1px);
+}
+
+/* div next btn */
+
+.btn-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-div button {
+    height: 60px;
+    background: linear-gradient(135deg, var(--warning), #d97706);
+    color: var(--text-light);
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+    padding: 10px 20px;
+}
+
+.btn-div button:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+    box-shadow: 0 15px 30px rgba(245, 158, 11, 0.5);
+}
