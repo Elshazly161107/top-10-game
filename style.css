@@ -399,6 +399,26 @@ footer a:hover {
     box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
 }
 
+.players-data .points-limit-alert {
+    margin-top: -30px;
+    width: calc(100% - 80px);
+    height: 49.6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.players-data .points-limit-alert.close {
+    height: 0;
+}
+
+.players-data .points-limit-alert p {
+    padding: 10px;
+    color: var(--warning);
+}
+
 /* زر الاستمرار */
 .players-data button {
     height: 56px;

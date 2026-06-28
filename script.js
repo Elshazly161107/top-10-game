@@ -97,7 +97,7 @@ function setWinning() {
     winnerScore = player1score;
     loserName = player2name;
     loserScore = player2score;
-  } else {
+  } else if (player1score < player2score) {
     winnerName = player2name;
     winnerScore = player2score;
     loserName = player1name;
@@ -131,9 +131,9 @@ function calcScore() {
     }
     checkAllUnclicked();
     initScore();
-    console.log(player1score);
-    console.log(player2score);
-    console.log(scoreLimitIn);
+    // console.log(player1score);
+    // console.log(player2score);
+    // console.log(scoreLimitIn);
     if (player1score >= scoreLimitIn || player2score >= scoreLimitIn) {
       setWinning();
     } else return;
@@ -217,6 +217,8 @@ function setQuesArr() {
 
 function setQues() {
   if (currentQues.length === 0) {
+    setWinning();
+    winPage.classList.remove("close");
     return;
   }
 
@@ -253,9 +255,9 @@ function setQuestionDiv() {
       </button>`;
     answersDiv.appendChild(a);
   }
-
-  calcScore();
 }
+
+calcScore();
 
 let nextQuesMainBtn = document.querySelector(".btn-div");
 nextQuesMainBtn.addEventListener("click", () => {
